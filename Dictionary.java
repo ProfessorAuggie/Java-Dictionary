@@ -4,7 +4,7 @@ import java.net.URI;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
-public class UI {
+public class Dictionary {
     private String[] keywords = {"abstract", "assert", "boolean", "break", "byte", "case", "catch", "char", "class",
             "const", "continue", "default", "do", "double", "else", "enum", "extends", "final", "finally", "float",
             "for", "if", "implements", "import", "instanceof", "int", "interface", "long", "native", "new", "package",
@@ -63,7 +63,7 @@ public class UI {
             "Used to create a while loop."
     };
 
-    public UI() {
+    public Dictionary() {
         Frame f = new Frame("Java Dictionary");
         Label titleLabel = new Label("JAVA DICTIONARY");
         Label subTitleLabel = new Label("Welcome to Java Dictionary!");
@@ -103,7 +103,7 @@ public class UI {
 
         p.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 12));
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < keywords.length; i++) {
             keywordButtons[i] = new Button((i + 1) + ". " + keywords[i]);
             keywordButtons[i].setPreferredSize(new Dimension(420, 25));
             keywordButtons[i].setFont(buttonFont);
@@ -236,21 +236,12 @@ public class UI {
     private void addCreatedByLabels() {
         Frame createdByFrame = new Frame("Created by");
 
-        Label person1Label = createClickableLabel("Aditya Khurana (22BCS17302)", "https://www.linkedin.com/in/aditya-khurana-");
-        Label person2Label = createClickableLabel("Vaibhav Kushwaha (22BCS17275)", "https://www.linkedin.com/in/professorauggie");
-        Label person3Label = createClickableLabel("Shagun Rana (22BCS17289)", "linkedin.com/in/shagun-rana-0a4a22241");
-        Label person4Label = createClickableLabel("Umesh (22BCS17270)", "https://www.linkedin.com/in/umesh-yadav-30b736298");
+        Label person1Label = createClickableLabel("Vaibhav Kushwaha", "https://www.linkedin.com/in/professorauggie");
         Font b = new Font("Calibri", Font.BOLD, 16);
         Panel createdByPanel = new Panel();
         createdByPanel.setLayout(new GridLayout(4, 1, 0, 2));
         person1Label.setFont(b);
-        person2Label.setFont(b);
-        person3Label.setFont(b);
-        person4Label.setFont(b);
         createdByPanel.add(person1Label);
-        createdByPanel.add(person2Label);
-        createdByPanel.add(person3Label);
-        createdByPanel.add(person4Label);
 
         createdByFrame.add(createdByPanel);
         createdByFrame.setSize(300, 200);
@@ -292,16 +283,15 @@ public class UI {
 
     private void openLinkedInProfile(String linkedInURL) {
         if (!linkedInURL.isEmpty()) {
-            try{
+            try {
                 Desktop.getDesktop().browse(new URI(linkedInURL));
-            }
-            catch(IOException | URISyntaxException ex){
+            } catch (IOException | URISyntaxException ex) {
                 ex.printStackTrace();
             }
         }
     }
 
     public static void main(String[] args) {
-        new UI();
+        new Dictionary();
     }
 }
